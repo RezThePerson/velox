@@ -1,11 +1,19 @@
 ---
 import Base from "../components/layout/Base.astro";
+
+import TextInput from "../components/app/configure/TextInput.astro";
+import PreviewSpeed from "../components/app/configure/PreviewSpeed.astro";
+import Settings from "../components/app/configure/Settings.astro";
+import StartButton from "../components/app/configure/StartButton.astro";
 ---
 
 <Base>
-    <div class="p-2 bg-mauve-900 h-full">
-        <div class="border-violet-700 flex justify-between border-2 p-2 h-full">
-            <div></div>
+    <div class="flex justify-between gap-2 p-5 h-full bg-mauve-900">
+        <TextInput />
+        <div class="w-full flex flex-col gap-2">
+            <PreviewSpeed />
+            <Settings />
+            <StartButton />
         </div>
     </div>
 </Base>
