@@ -8,12 +8,20 @@ import StartButton from "../components/app/configure/StartButton.astro";
 ---
 
 <Base>
-    <div class="flex justify-between gap-2 p-5 h-full bg-mauve-900">
-        <TextInput />
-        <div class="w-full flex flex-col gap-2">
-            <PreviewSpeed />
-            <Settings />
-            <StartButton />
+    <div class="flex justify-between gap-4 p-5 h-full bg-mauve-900">
+        <div class="flex-1 h-full">
+            <TextInput />
+        </div>
+        <div class="flex-1 flex flex-col gap-4 h-full">
+            <div class="flex-1">
+                <PreviewSpeed />
+            </div>
+            <div class="shrink-0">
+                <Settings />
+            </div>
+            <div class="shrink-0">
+                <StartButton />
+            </div>
         </div>
     </div>
 </Base>

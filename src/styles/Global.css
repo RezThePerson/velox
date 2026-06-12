@@ -1,1 +1,14 @@
 @import "tailwindcss";
+
+@theme {
+  --color-mauve-900: #1e1e2e;
+  --color-violet-900: #313244;
+  --color-violet-700: #45475a;
+  --color-violet-600: #585b70;
+  --color-violet-500: #cba6f7;
+}
+
+:root {
+  background-color: var(--color-mauve-900);
+  color: white;
+}

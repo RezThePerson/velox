@@ -4,7 +4,11 @@
     <span>Demo text at this speed:</span>
 
     <div class="h-full justify-center flex items-center">
-        <span class="text-6xl"> Si<span class="text-red-400">g</span>ma</span>
+        <div id="preview-word-container" class="text-6xl font-mono text-white flex w-full">
+            <div id="preview-left" class="text-right min-w-[50%]"></div>
+            <div id="preview-focus" class="text-red-400"></div>
+            <div id="preview-right" class="text-left min-w-[50%]"></div>
+        </div>
     </div>
 
     <div class="flex justify-end">
@@ -14,3 +18,52 @@
         </span>
     </div>
 </div>
+
+<script>
+    const previewLeft = document.getElementById('preview-left');
+    const previewFocus = document.getElementById('preview-focus');
+    const previewRight = document.getElementById('preview-right');
+    const demoText = "The quick brown fox jumps over the lazy dog. Speed reading with RSVP is efficient and fun. Try to keep up!".split(' ');
+    let currentIndex = 0;
+    let speed = 300;
+    let interval: number | undefined;
+
+    function getORP(word: string) {
+        if (word.length <= 1) return 0;
+        if (word.length <= 5) return 1;
+        if (word.length <= 9) return 2;
+        if (word.length <= 13) return 3;
+        return 4;
+    }
+    
+    function updatePreviewDisplay() {
+        if (!previewLeft || !previewFocus || !previewRight) return;
+        
+        const word = demoText[currentIndex];
+        const orpIndex = getORP(word);
+        
+        previewLeft.textContent = word.substring(0, orpIndex);
+        previewFocus.textContent = word[orpIndex];
+        previewRight.textContent = word.substring(orpIndex + 1);
+        
+        currentIndex = (currentIndex + 1) % demoText.length;
+    }
+
+    function startPreview() {
+        if (interval) clearInterval(interval);
+        
+        const msPerWord = (60 / speed) * 1000;
+        
+        interval = setInterval(() => {
+            updatePreviewDisplay();
+        }, msPerWord);
+    }
+
+    window.addEventListener('speedChange', (e: any) => {
+        speed = e.detail.speed;
+        startPreview();
+    });
+
+    // Initial start
+    startPreview();
+</script>
