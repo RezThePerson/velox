@@ -5,17 +5,4 @@
     Start
 </button>
 
-<script>
-    const startButton = document.getElementById('start-button');
-    const textInput = document.getElementById('reader-text') as HTMLTextAreaElement;
-    const speedNumber = document.getElementById('speed-number') as HTMLInputElement;
-
-    startButton?.addEventListener('click', () => {
-        const text = textInput?.value || textInput?.placeholder || "";
-        const speed = parseInt(speedNumber?.value || "300");
-
-        window.dispatchEvent(new CustomEvent('startReading', {
-            detail: { text, speed }
-        }));
-    });
-</script>
+<script src="../../../logic/app/Start.js"></script>
