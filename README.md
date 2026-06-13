@@ -1,46 +1,7 @@
-# Astro Starter Kit: Basics
+# Velox
 
-```sh
-bun create astro@latest -- --template basics
-```
+![Velox Preview](https://cdn.hackclub.com/019ebed5-703a-7bb3-9681-aac8bee6624b/image.png)
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+A fast and minimal speed-reading application.
 
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src
-│   ├── assets
-│   │   └── astro.svg
-│   ├── components
-│   │   └── Welcome.astro
-│   ├── layouts
-│   │   └── Layout.astro
-│   └── pages
-│       └── index.astro
-└── package.json
-```
-
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
-
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `bun install`             | Installs dependencies                            |
-| `bun dev`             | Starts local dev server at `localhost:4321`      |
-| `bun build`           | Build your production site to `./dist/`          |
-| `bun preview`         | Preview your build locally, before deploying     |
-| `bun astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `bun astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+Velox helps you read faster by displaying words one by one at a customizable speed using Rapid Serial Visual Presentation (RSVP). By focusing your eyes on a single point—the Optimal Recognition Point. Tt eliminates the need for horizontal eye movement, allowing you to process text much faster than traditional reading.
