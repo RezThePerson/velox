@@ -1,3 +1,3 @@
 export const store = {
-  speed: 10,
+  speed: 300,
 };

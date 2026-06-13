@@ -27,6 +27,8 @@
 </div>
 
 <script>
+    import { getFormat } from '../../../logic/app/reader/formater/GetFormat.js';
+
     const overlay = document.getElementById('reader-overlay');
     const wordLeft = document.getElementById('word-left');
     const wordFocus = document.getElementById('word-focus');
@@ -35,35 +37,26 @@
     const closeBtn = document.getElementById('reader-close');
     const progressBar = document.getElementById('reader-progress');
 
-    let words: string[] = [];
+    let formattedWords: { before: string; opr: string; after: string }[] = [];
     let currentIndex = 0;
     let speed = 300;
     let isPaused = false;
     let interval: number | undefined;
 
-    function getORP(word: string) {
-        if (word.length <= 1) return 0;
-        if (word.length <= 5) return 1;
-        if (word.length <= 9) return 2;
-        if (word.length <= 13) return 3;
-        return 4;
-    }
-
     function updateDisplay() {
         if (!wordLeft || !wordFocus || !wordRight || !progressBar) return;
-        if (currentIndex >= words.length) {
+        if (currentIndex >= formattedWords.length) {
             stopReader();
             return;
         }
 
-        const word = words[currentIndex];
-        const orpIndex = getORP(word);
+        const word = formattedWords[currentIndex];
         
-        wordLeft.textContent = word.substring(0, orpIndex);
-        wordFocus.textContent = word[orpIndex];
-        wordRight.textContent = word.substring(orpIndex + 1);
+        wordLeft.textContent = word.before;
+        wordFocus.textContent = word.opr;
+        wordRight.textContent = word.after;
         
-        const progress = ((currentIndex + 1) / words.length) * 100;
+        const progress = ((currentIndex + 1) / formattedWords.length) * 100;
         progressBar.style.width = `${progress}%`;
     }
 
@@ -87,11 +80,13 @@
     }
 
     window.addEventListener('startReading', (e: any) => {
-        words = e.detail.text.trim().split(/\s+/);
+        const text = e.detail.text;
         speed = e.detail.speed;
+        
+        formattedWords = getFormat(text);
         currentIndex = 0;
         
-        if (words.length === 0 || words[0] === "") return;
+        if (formattedWords.length === 0) return;
 
         overlay?.classList.remove('hidden');
         startReader();
